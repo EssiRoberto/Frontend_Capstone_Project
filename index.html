@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DevHub Explorer</title>
     <style>
-       * {
+        * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
@@ -15,114 +16,266 @@
             font-family: 'Segoe UI', Arial, sans-serif;
             background: #f5f5f5;
             color: #222;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
-         header {
+        nav {
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 2.5rem;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: #111;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #444;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: #111;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .btn-primary {
+            background: #111;
+            color: #fff;
+            border: none;
+            padding: 0.55rem 1.2rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #111;
+            border: 1.5px solid #ccc;
+            padding: 0.55rem 1.2rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        .hero {
+            background: #1e1e1e;
+            color: #fff;
             text-align: center;
-            padding: 20px;
+            padding: 5rem 2rem 4rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.25rem;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #bbb;
+            max-width: 480px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+
+        .hero-btn {
+            background: #fff;
+            color: #111;
+            border: none;
+            padding: 0.85rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .hero-btn:hover {
+            background: #e8e8e8;
+        }
+
+        .search-section {
+            max-width: 700px;
+            width: 100%;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+            flex: 1;
+        }
+
+        .search-section h2 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #111;
         }
 
         .search-box {
             display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin: 20px;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
         }
 
-         .search-box input {
-            padding: 10px;
-            width: 300px;
-        }
-
-         .search-box button {
-            padding: 10px 20px;
-            cursor: pointer;
-        }
-
-         #results-container {
-            display: grid;
-            gap: 20px;
-            padding: 20px;
-        }
-
-         .card {
-            padding: 20px;
-            border: 1px solid #ddd;
+        #search-input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border: 1.5px solid #ccc;
             border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
         }
 
-         .card h3 {
-            margin-bottom: 10px;
+        #search-input:focus {
+            border-color: #111;
+        }
+
+        #search-btn {
+            background: #111;
+            color: #fff;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        #search-btn:hover {
+            background: #333;
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+        }
+
+        .card h3 {
+            font-size: 1.1rem;
+            color: #111;
+            margin-bottom: 0.4rem;
         }
 
         .card p {
-            margin-bottom: 8px;
+            color: #555;
+            font-size: 0.92rem;
+            line-height: 1.5;
+            margin-bottom: 0.3rem;
+        }
+
+        .card .stars {
+            color: #888;
+            font-size: 0.85rem;
         }
 
         footer {
+            background: #1e1e1e;
+            color: #888;
             text-align: center;
-            padding: 20px;
-            margin-top: 20px;
+            padding: 1.5rem;
+            font-size: 0.9rem;
+            margin-top: auto;
         }
-
-
     </style>
 </head>
 <body>
-    <header>
-        <h1>DevHub Explorer</h1>
-        <p>Search and explore open-source software projects.</p>
-    </header>
 
-    <main>
+    <nav>
+        <a class="nav-logo" href="#">DevHub</a>
+        <ul class="nav-links">
+            <li><a href="#">Explore</a></li>
+            <li><a href="#">Trending</a></li>
+            <li><a href="#">About</a></li>
+        </ul>
+        <div class="nav-actions">
+            <button class="btn-primary">Sign up</button>
+            <button class="btn-outline">Log in</button>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Explore code. Build together.</h1>
+        <p>DevHub Explorer helps you discover open-source projects from GitHub using live search.</p>
+        <button class="hero-btn">Start Exploring</button>
+    </section>
+
+    <main class="search-section">
+        <h2>Search Repositories</h2>
         <div class="search-box">
-            <input type="text" id="search-input" placeholder="search repositories">
+            <input type="text" id="search-input" placeholder="Search repositories">
             <button id="search-btn">Search</button>
         </div>
-
         <div id="results-container"></div>
     </main>
 
-    <footer><p>&copy; 2026 DevHub. Built with Vanilla JavaScript.</p></footer>
+    <footer>
+        <p>&copy; 2026 DevHub Explorer. Built with Vanilla JavaScript.</p>
+    </footer>
 
     <script>
-       const searchInput = document.getElementById("search-input");
-       const searchBtn = document.getElementById("search-btn");
-    //    const resultsContainer = document.getElementById("results-container");
+        const searchInput = document.getElementById("search-input");
+        const searchBtn = document.getElementById("search-btn");
+        const resultsContainer = document.getElementById("results-container");
 
         async function searchRepositories(query) {
-            const response = await fetch(`https://api.github.com/search/repositories?q=${query}&per_page=5`);
+            resultsContainer.innerHTML = "<p>Loading...</p>";
+            const cleanQuery = query.replace(/^https?:\/\/github\.com\//i, "").replace(/^github\.com\//i, "").replace(/\/+$/, "");
+            const url = `https://api.github.com/search/repositories?q=${encodeURIComponent(cleanQuery)}&per_page=5`;
+            const response = await fetch(url);
             const data = await response.json();
+            resultsContainer.innerHTML = "";
 
-            const resultsContainer = document.getElementById("results-container");
-            resultsContainer.textContent = "";
-
-            if (data.items.length > 0) {
+            if (data.items && data.items.length > 0) {
                 data.items.forEach(repo => {
                     const card = document.createElement("div");
                     card.className = "card";
-
-                    card.innerHTML = `
-                    <h3>${repo.name}</h3>
-                    <p>${repo.description || "No description provided."}</p>
-                    <p>Stars: ${repo.stargazers_count}</p>
-                    `;
-
+                    card.innerHTML = `<h3>${repo.name}</h3><p>${repo.description || "No description provided."}</p><p class="stars">⭐ ${repo.stargazers_count} stars</p>`;
                     resultsContainer.appendChild(card);
                 });
             } else {
                 resultsContainer.textContent = "No repositories found";
             }
-
         }
 
-    searchBtn.addEventListener("click", function() {
-        const query = searchInput.value.trim();
-
-        if (query !== "") {
-            searchRepositories(query);
-    }
-});
+        searchBtn.addEventListener("click", function() {
+            const query = searchInput.value.trim();
+            if (query !== "") {
+                searchRepositories(query);
+            }
+        });
     </script>
+
 </body>
 </html>
+```
